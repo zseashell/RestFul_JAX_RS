@@ -1,5 +1,10 @@
 package chap3;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "customer")
 public class Customer {
     private int id;
     private String firstName;
@@ -10,6 +15,7 @@ public class Customer {
     private String zip;
     private String country;
 
+    @XmlAttribute
     public int getId() {
         return id;
     }
@@ -18,6 +24,7 @@ public class Customer {
         this.id = id;
     }
 
+    @XmlElement(name = "first-name")
     public String getFirstName() {
         return firstName;
     }
@@ -26,6 +33,7 @@ public class Customer {
         this.firstName = firstName;
     }
 
+    @XmlElement(name = "last-name")
     public String getLastName() {
         return lastName;
     }
@@ -34,6 +42,7 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    @XmlElement
     public String getStreet() {
         return street;
     }
@@ -42,6 +51,7 @@ public class Customer {
         this.street = street;
     }
 
+    @XmlElement
     public String getCity() {
         return city;
     }
@@ -50,6 +60,7 @@ public class Customer {
         this.city = city;
     }
 
+    @XmlElement
     public String getState() {
         return state;
     }
@@ -58,6 +69,7 @@ public class Customer {
         this.state = state;
     }
 
+    @XmlElement
     public String getZip() {
         return zip;
     }
@@ -66,6 +78,7 @@ public class Customer {
         this.zip = zip;
     }
 
+    @XmlElement
     public String getCountry() {
         return country;
     }
@@ -74,4 +87,10 @@ public class Customer {
         this.country = country;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
+            + ", street='" + street + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip='" + zip
+            + '\'' + ", country='" + country + '\'' + '}';
+    }
 }

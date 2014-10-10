@@ -41,20 +41,31 @@ public class CustomerResource {
         return Response.created(URI.create("/JAX-RS_RESTful/services/customers/" + customer.getId())).build();
     }
 
+//    @GET
+//    @Path("{id}")
+//    @Produces("application/xml")
+//    public StreamingOutput getCustomer(@PathParam("id") int id) {
+//        final Customer customer = custerDB.get(id);
+//        if (customer == null) {
+//            throw new WebApplicationException(Response.Status.NOT_FOUND);
+//        }
+//        return new StreamingOutput() {
+//            @Override
+//            public void write(OutputStream outputStream) throws IOException, WebApplicationException {
+//                outputCustomer(outputStream, customer);
+//            }
+//        };
+//    }
+
     @GET
     @Path("{id}")
     @Produces("application/xml")
-    public StreamingOutput getCustomer(@PathParam("id") int id) {
-        final Customer customer = custerDB.get(id);
+    public Customer getCustomer(@PathParam("id") int id) {
+        Customer customer = custerDB.get(id);
         if (customer == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
-        return new StreamingOutput() {
-            @Override
-            public void write(OutputStream outputStream) throws IOException, WebApplicationException {
-                outputCustomer(outputStream, customer);
-            }
-        };
+        return customer;
     }
 
     @PUT
@@ -120,10 +131,6 @@ public class CustomerResource {
         } catch (Exception e) {
             throw new WebApplicationException(e, Response.Status.BAD_REQUEST);
         }
-    }
-
-    public static void main(String[] args) {
-        // TODO: test XML-object conversion
     }
 
 }
